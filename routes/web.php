@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 $data = [
-    'nama' => 'Nama Kamu',
-    'nim' => '22XXXX'
+    'nama' => 'Mikhail Bogart Islami',
+    'nim' => '24.12.3355'
 ];
 
 Route::get('/', fn() => view('home', $data));
