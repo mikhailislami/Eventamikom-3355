@@ -8,7 +8,7 @@ $data = [
 ];
 
 Route::get('/', fn() => view('welcome', $data));
-Route::get('home', fn() => view('home', $data));
+Route::get('/home', fn() => view('home', $data));
 Route::get('/profil', fn() => view('profil', $data));
 Route::get('/katalog', fn() => view('katalog', $data));
 Route::get('/bantuan', fn() => view('bantuan', $data));

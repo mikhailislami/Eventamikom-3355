@@ -9,7 +9,7 @@
 
 <nav class="bg-white py-4 shadow">
     <div class="flex justify-center gap-10 text-lg font-medium text-gray-700">
-        <a href="/" class="text-blue-600 font-semibold">Home</a>
+        <a href="/home" class="text-blue-600 font-semibold">Home</a>
         <a href="/profil">Profil</a>
         <a href="/katalog">Katalog</a>
         <a href="/bantuan">Bantuan</a>
