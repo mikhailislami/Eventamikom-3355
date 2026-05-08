@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EventController as EventAdminController;
 
 $data = [
     'nama' => 'Mikhail Bogart Islami',
@@ -23,7 +24,11 @@ Route::get('/event-detail', [EventController::class, 'index'])->name('events.sho
 Route::get('/checkout', [EventController::class, 'checkout'])->name('checkout'); 
 Route::get('/ticket', [EventController::class, 'ticket'])->name('ticket');
 
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::get('/event', [EventController::class, 'indexAdmin'])->name('admin.events.index');
 Route::get('/transactions', [DashboardController::class, 'transactions'])->name('admin.transactions.index');
 Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('events',EventAdminController::class);
+});
