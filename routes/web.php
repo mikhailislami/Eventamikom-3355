@@ -25,10 +25,10 @@ Route::get('/checkout', [EventController::class, 'checkout'])->name('checkout');
 Route::get('/ticket', [EventController::class, 'ticket'])->name('ticket');
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-Route::get('/event', [EventController::class, 'indexAdmin'])->name('admin.events.index');
-Route::get('/transactions', [DashboardController::class, 'transactions'])->name('admin.transactions.index');
-Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/event', [EventController::class, 'indexAdmin'])->name('events');
+Route::get('/transactions', [DashboardController::class, 'transactions'])->name('transactions');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('events',EventAdminController::class);
 });
