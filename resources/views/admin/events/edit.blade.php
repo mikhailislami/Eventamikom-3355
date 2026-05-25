@@ -45,7 +45,7 @@
                     <label class="block text-sm font-bold text-slate-700 mb-2">Deskripsi</label>
                     <textarea name="description" rows="4"
                         class="w-full px-5 py-3 rounded-xl border border-slate-200 outline-none"
-                        required>{{ old('description', $event->description) }}</textarea>
+                        nullable>{{ old('description', $event->description) }}</textarea>
                 </div>
 
 
@@ -66,7 +66,7 @@
                 <div class="col-span-2">
                     <label class="block text-sm font-bold text-slate-700 mb-2">Lokasi</label>
                     <input type="text" name="location" value="{{ old('location', $event->location) }}"
-                        class="w-full px-5 py-3 rounded-xl border border-slate-200 outline-none" required>
+                        class="w-full px-5 py-3 rounded-xl border border-slate-200 outline-none" nullable>
                 </div>
 
 

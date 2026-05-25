@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <style>
+        html {
+        scroll-behavior: smooth; 
+    }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
@@ -16,6 +19,9 @@
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
         }
+        section {
+    scroll-margin-top: 100px; 
+}
     </style>
 </head>
 
@@ -32,7 +38,7 @@
         </div>
         <div class="hidden md:flex gap-8 font-medium">
             <a href="#" class="text-indigo-600">Jelajahi</a>
-            <a href="#" class="hover:text-indigo-600 transition">Kategori</a>
+            <a href="#kategori-section" class="hover:text-indigo-600 transition">Kategori</a>
             <a href="#" class="hover:text-indigo-600 transition">Tentang Kami</a>
         </div>
         <!-- <div class="flex gap-3">

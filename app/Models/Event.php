@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
 
 class Event extends Model
 {
-    //
     protected $fillable = [
         'category_id',
         'title',
@@ -18,9 +18,8 @@ class Event extends Model
         'poster_path'
     ];
 
-
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }
