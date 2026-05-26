@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\EventController as EventAdminController;
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminPartnerController;
 use App\Http\Controllers\FrontendController;
-
+use Illuminate\Support\Facades\Artisan;
 $data = [
     'nama' => 'Mikhail Bogart Islami',
     'nim' => '24.12.3355'
@@ -40,4 +40,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::resource('admin-categories',CategoryController::class);
 Route::resource('admin-partners', AdminPartnerController::class);
 
-
+Route::get('/gas-migrate', function () {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        return "Database Berhasil di-Update! <br> Output: " . Artisan::output();
+    } catch (\Exception $e) {
+        return "Gagal Migrate: " . $e->getMessage();
+    }
+});
