@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('title');
             $table->text('description')->nullable();
             $table->dateTime('date');
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->integer('price');
             $table->integer('stock');
             $table->string('poster_path')->nullable();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -29,7 +30,8 @@ class CategoryController extends Controller
         ]);
 
         Category::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'slug' => Str::slug($request->name), 
         ]);
 
         return back()->with('success', 'Kategori berhasil ditambahkan.');
@@ -44,7 +46,8 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
 
         $category->update([
-            'name' => $request->name
+            'name' => $request->name,
+            'slug' => Str::slug($request->name), 
         ]);
 
         return back()->with('success', 'Kategori berhasil diupdate.');

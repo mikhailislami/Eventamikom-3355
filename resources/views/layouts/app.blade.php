@@ -75,7 +75,7 @@
             <div>
                 <h4 class="text-white font-bold mb-6">Hubungi Kami</h4>
                 <ul class="space-y-4">
-                    <li>support@eventtiket.com</li>
+                    <li>Mikhailislami@students.amikom.ac.id</li>
                     <li>+62 812 3456 7890</li>
                 </ul>
             </div>

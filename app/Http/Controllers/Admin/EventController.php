@@ -76,6 +76,8 @@ class EventController extends Controller
             'date' => 'required',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
+            'description' => 'nullable',
+            'location' => 'nullable',
         ]);
 
         $posterPath = $event->poster_path;

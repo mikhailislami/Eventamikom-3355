@@ -10,7 +10,8 @@ class Category extends Model
     protected $table = 'event_categories';
 
     protected $fillable = [
-        'name'
+        'name',
+        'slug' // 
     ];
 
     public function events()

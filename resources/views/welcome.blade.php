@@ -115,10 +115,10 @@
         </div>
 
         <div class="flex gap-2">
-
-           <a href="#kategori-section" class="p-3 border rounded-xl hover:bg-white hover:shadow-md transition">
-        Semua Kategori
-            </a>
+            <a href="#kategori-section" class="p-3 border rounded-xl hover:bg-white hover:shadow-md transition">
+                 Semua Kategori
+             </a>
+           
 
         </div>
 
@@ -288,7 +288,7 @@
                     </svg>
 
                     <span>
-                        5-7 May 2026
+                        18-20 October 2024
                     </span>
 
                 </div>
@@ -296,7 +296,7 @@
                 <div class="flex justify-between items-center pt-4 border-t">
 
                     <span class="text-2xl font-black text-indigo-600">
-                        Rp 50RB
+                        Gratis
                     </span>
 
                     <a href="event-detail.html"
