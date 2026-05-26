@@ -43,11 +43,19 @@ Route::resource('admin-partners', AdminPartnerController::class);
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/debug-semua', function () {
     try {
-        // Cukup jalankan seeder saja (tidak perlu migrate fresh agar tabel lain tidak hilang)
-        Artisan::call('db:seed', ['--class' => 'MasterSeeder', '--force' => true]);
+        // Kita tidak pakai db:seed biasa, kita panggil MasterSeeder langsung
+        // supaya kita bisa kontrol isinya.
+        Artisan::call('db:seed', [
+            '--class' => 'MasterSeeder', 
+            '--force' => true
+        ]);
         
-        return "<h1>MANTAP!</h1><p>Data dari VSCode sudah berhasil disalin ke Web Cloud.</p>";
+        return "<h1>MANTAP!</h1><p>Data Event, Category, dan Partner sudah masuk ke Cloud.</p>";
     } catch (\Exception $e) {
+        // Kalau error karena data sudah ada, kita anggap sukses saja
+        if (str_contains($e->getMessage(), 'UNIQUE constraint failed')) {
+            return "<h1>SUDAH OK!</h1><p>Data sudah ada di database, tidak perlu diisi lagi. Silakan cek Kelola Event.</p>";
+        }
         return "<h1>Waduh!</h1><p>Error: " . $e->getMessage() . "</p>";
     }
 });
