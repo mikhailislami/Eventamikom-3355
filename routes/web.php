@@ -41,3 +41,16 @@ Route::resource('admin-categories',CategoryController::class);
 Route::resource('admin-partners', AdminPartnerController::class);
 
 Route::get('/', [FrontendController::class, 'index']);
+Route::get('/debug-semua', function () {
+    try {
+        // Jalankan migrasi dulu (biar tabelnya ada)
+        Artisan::call('migrate', ['--force' => true]);
+        
+        // JALANKAN SEEDER (Ini yang bakal masukin data JSON tadi)
+        Artisan::call('db:seed', ['--force' => true]);
+        
+        return "<h1>BERHASIL!</h1><p>Data dari JSON sudah disuntik ke Database Cloud.</p>";
+    } catch (\Exception $e) {
+        return "<h1>GAGAL!</h1><p>Error: " . $e->getMessage() . "</p>";
+    }
+});
