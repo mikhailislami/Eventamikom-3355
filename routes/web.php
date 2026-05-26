@@ -43,19 +43,23 @@ Route::resource('admin-partners', AdminPartnerController::class);
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/debug-semua', function () {
     try {
-        // Kita tidak pakai db:seed biasa, kita panggil MasterSeeder langsung
-        // supaya kita bisa kontrol isinya.
+        // 1. Cek dan buat file database.sqlite kalau belum ada
+        $dbPath = database_path('database.sqlite');
+        if (!file_exists($dbPath)) {
+            file_put_contents($dbPath, '');
+        }
+
+        // 2. Jalankan migrasi fresh (untuk membangun tabel dari awal)
+        Artisan::call('migrate:fresh', ['--force' => true]);
+        
+        // 3. Jalankan MasterSeeder (untuk memasukkan data JSON kamu)
         Artisan::call('db:seed', [
             '--class' => 'MasterSeeder', 
             '--force' => true
         ]);
         
-        return "<h1>MANTAP!</h1><p>Data Event, Category, dan Partner sudah masuk ke Cloud.</p>";
+        return "<h1>MANTAP BERHASIL!</h1><p>File database sudah dibuat dan data VSCode sudah masuk semua.</p>";
     } catch (\Exception $e) {
-        // Kalau error karena data sudah ada, kita anggap sukses saja
-        if (str_contains($e->getMessage(), 'UNIQUE constraint failed')) {
-            return "<h1>SUDAH OK!</h1><p>Data sudah ada di database, tidak perlu diisi lagi. Silakan cek Kelola Event.</p>";
-        }
-        return "<h1>Waduh!</h1><p>Error: " . $e->getMessage() . "</p>";
+        return "<h1>Masih Gagal:</h1><p>" . $e->getMessage() . "</p>";
     }
 });
