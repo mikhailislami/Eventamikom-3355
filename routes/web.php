@@ -41,22 +41,3 @@ Route::resource('admin-categories',CategoryController::class);
 Route::resource('admin-partners', AdminPartnerController::class);
 
 Route::get('/', [FrontendController::class, 'index']);
-Route::get('/debug-semua', function () {
-    try {
-        // 1. PAKSA BUAT FILE DATABASE KALAU HILANG
-        $dbPath = database_path('database.sqlite');
-        if (!file_exists($dbPath)) {
-            touch($dbPath); 
-        }
-
-        // 2. BANGUN ULANG STRUKTUR
-        Artisan::call('migrate:fresh', ['--force' => true]);
-        
-        // 3. ISI DATA
-        Artisan::call('db:seed', ['--class' => 'MasterSeeder', '--force' => true]);
-        
-        return "<h1>KALI INI BENERAN BERHASIL!</h1><p>Database dibuat ulang dan data sudah masuk.</p>";
-    } catch (\Exception $e) {
-        return "<h1>Masih Error:</h1><p>" . $e->getMessage() . "</p>";
-    }
-});

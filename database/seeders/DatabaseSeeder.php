@@ -99,9 +99,5 @@ class DatabaseSeeder extends Seeder
             'stock' => 40,
             'poster_path' => 'posters/event-6.png',
         ]);
-
-        $this->call([
-        MasterSeeder::class,
-    ]);
     }
 }
