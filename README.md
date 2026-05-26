@@ -13,6 +13,7 @@ Tugas 2
 6. Halaman Checkout : https://eventamikom-3355-main-ohfzju.free.laravel.cloud/checkout
 
 Tugas 3 : Menambahkan database migration/seeding
+
 Tugas 4 : CRUD tabel event
 
 UTS : https://eventamikom-3355-main-ohfzju.free.laravel.cloud/
