@@ -1,7 +1,9 @@
 Nama : Mikhail Bogart Islami
+
 NIM  : 24.12.3355
 
 LINK L.CLOUD : https://eventamikom-3355-main-ohfzju.free.laravel.cloud/
+
 LINK TUGAS 1 : https://eventamikom-3355-main-ohfzju.free.laravel.cloud/home
 
 Tugas 2
