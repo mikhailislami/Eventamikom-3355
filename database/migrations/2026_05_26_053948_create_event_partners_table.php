@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_partners', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('logo_url');
-            $table->timestamps();
-        });
+        // Tambahkan pengecekan if (!Schema::hasTable(...))
+        if (!Schema::hasTable('event_partners')) {
+            Schema::create('event_partners', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('logo_url');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

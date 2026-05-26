@@ -17,7 +17,7 @@ $data = [
     'nim' => '24.12.3355'
 ];
 
-Route::get('/home', fn() => view('home', $data));
+Route::get('/', [FrontendController::class, 'index']);
 
 Route::get('/profil', fn() => view('profil', $data));
 Route::get('/katalog', fn() => view('katalog', $data));
@@ -40,4 +40,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::resource('admin-categories',CategoryController::class);
 Route::resource('admin-partners', AdminPartnerController::class);
 
-Route::get('/', [FrontendController::class, 'index']);
+
