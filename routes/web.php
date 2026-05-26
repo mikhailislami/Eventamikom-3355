@@ -6,6 +6,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EventController as EventAdminController;
+use Illuminate\Support\Facades\Artisan;
 
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminPartnerController;
@@ -40,3 +41,18 @@ Route::resource('admin-categories',CategoryController::class);
 Route::resource('admin-partners', AdminPartnerController::class);
 
 Route::get('/', [FrontendController::class, 'index']);
+Route::get('/debug-semua', function () {
+    try {
+        // 1. Jalankan Migrasi
+        Artisan::call('migrate', ['--force' => true]);
+        $output = Artisan::output();
+        
+        // 2. Clear Cache
+        Artisan::call('optimize:clear');
+        
+        return "<h1>Success!</h1><p>Hasil Migrasi: " . $output . "</p><a href='/dashboard'>Balik ke Dashboard</a>";
+    } catch (\Exception $e) {
+        // Jika gagal, dia akan nampilin pesan error aslinya di browser
+        return "<h1>Gagal!</h1><p>Error: " . $e->getMessage() . "</p>";
+    }
+});
