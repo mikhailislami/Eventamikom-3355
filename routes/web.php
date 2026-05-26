@@ -43,26 +43,11 @@ Route::resource('admin-partners', AdminPartnerController::class);
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/debug-semua', function () {
     try {
-        // 1. PAKSA buat file database.sqlite kalau belum ada
-        $dbPath = database_path('database.sqlite');
-        if (!file_exists($dbPath)) {
-            // Membuat file kosong
-            file_put_contents($dbPath, ""); 
-            chmod($dbPath, 0666); // Beri izin akses
-        }
-
-        // 2. Refresh Database (Hapus yang rusak, buat yang baru)
-        // Ini akan memastikan kolom 'slug' dan tabel lainnya tercipta sempurna
         Artisan::call('migrate:fresh', ['--force' => true]);
-        
-        // 3. Masukkan data JSON kamu
-        Artisan::call('db:seed', [
-            '--class' => 'MasterSeeder', 
-            '--force' => true
-        ]);
-        
-        return "<h1>MANTAP BERHASIL!</h1><p>Database dibuat & Data VSCode sudah masuk semua.</p>";
+        Artisan::call('db:seed', ['--class' => 'MasterSeeder', '--force' => true]);
+        return "<h1>MANTAP BERHASIL!</h1><p>Data sudah sama persis dengan VSCode.</p>";
     } catch (\Exception $e) {
-        return "<h1>Masih Gagal:</h1><p>" . $e->getMessage() . "</p>";
+        return "<h1>Error:</h1><p>" . $e->getMessage() . "</p>";
     }
+
 });
