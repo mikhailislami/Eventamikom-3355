@@ -43,11 +43,13 @@ Route::resource('admin-partners', AdminPartnerController::class);
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/debug-semua', function () {
     try {
+        // Hapus & buat ulang tabel (biar kolom slug dll terbuat)
         Artisan::call('migrate:fresh', ['--force' => true]);
+        // Masukkan data manual yang sudah kita rapikan di atas
         Artisan::call('db:seed', ['--class' => 'MasterSeeder', '--force' => true]);
-        return "<h1>MANTAP BERHASIL!</h1><p>Data sudah sama persis dengan VSCode.</p>";
+        
+        return "<h1>MANTAP BERHASIL!</h1><p>Data event sudah masuk semua. Cek dashboard sekarang!</p>";
     } catch (\Exception $e) {
-        return "<h1>Error:</h1><p>" . $e->getMessage() . "</p>";
+        return "<h1>Masih Gagal:</h1><p>" . $e->getMessage() . "</p>";
     }
-
 });
