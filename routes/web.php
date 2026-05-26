@@ -17,7 +17,6 @@ $data = [
     'nim' => '24.12.3355'
 ];
 
-Route::get('/welcome', fn() => view('welcome', $data))->name('home');
 Route::get('/home', fn() => view('home', $data));
 
 Route::get('/profil', fn() => view('profil', $data));
