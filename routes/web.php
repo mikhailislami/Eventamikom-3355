@@ -43,13 +43,12 @@ Route::resource('admin-partners', AdminPartnerController::class);
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/debug-semua', function () {
     try {
-        // Hapus & buat ulang tabel (biar kolom slug dll terbuat)
+        // Ini akan menghapus tabel lama dan membuat ulang sesuai migration terbaru (yang sudah ada slug)
         Artisan::call('migrate:fresh', ['--force' => true]);
-        // Masukkan data manual yang sudah kita rapikan di atas
         Artisan::call('db:seed', ['--class' => 'MasterSeeder', '--force' => true]);
         
-        return "<h1>MANTAP BERHASIL!</h1><p>Data event sudah masuk semua. Cek dashboard sekarang!</p>";
+        return "<h1>MANTAP BERHASIL TOTAL!</h1><p>Data sudah masuk semua.</p>";
     } catch (\Exception $e) {
-        return "<h1>Masih Gagal:</h1><p>" . $e->getMessage() . "</p>";
+        return "<h1>Error:</h1><p>" . $e->getMessage() . "</p>";
     }
 });
