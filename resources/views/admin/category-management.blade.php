@@ -85,7 +85,7 @@
 
                 <tr class="border-t hover:bg-slate-50 transition">
 
-                    <td class="px-6 py-4">{{ $category->id }}</td>
+                    <td class="px-6 py-4">{{ $loop->iteration }}</td>
 
                     <td class="px-6 py-4 font-semibold text-slate-800">
                         {{ $category->name }}

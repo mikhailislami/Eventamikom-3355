@@ -65,7 +65,7 @@
                 <tr class="text-center">
 
                     <td class="p-3 border">
-                        {{ $partner->id }}
+                        {{ $loop->iteration }}
                     </td>
 
                     <td class="p-3 border">
