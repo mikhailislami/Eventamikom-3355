@@ -1,8 +1,11 @@
 Nama : Mikhail Bogart Islami
+
 NIM  : 24.12.3355
 
 LINK L.CLOUD : https://eventamikom-3355-main-ohfzju.free.laravel.cloud/
+
 LINK TUGAS 1 : https://eventamikom-3355-main-ohfzju.free.laravel.cloud/home
+
 Tugas 2
 1. Halaman Beranda : https://eventamikom-3355-main-ohfzju.free.laravel.cloud/
 2. Halaman Dashboard : https://eventamikom-3355-main-ohfzju.free.laravel.cloud/dashboard
@@ -12,6 +15,10 @@ Tugas 2
 6. Halaman Checkout : https://eventamikom-3355-main-ohfzju.free.laravel.cloud/checkout
 
 Tugas 3 : Menambahkan database migration/seeding
+
+Tugas 4 : CRUD tabel event
+
+UTS : https://eventamikom-3355-main-ohfzju.free.laravel.cloud/
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
