@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminPartnerController;
@@ -33,7 +34,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 });
 
-Route::get('/', [FrontendController::class, 'index']);
+Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 Route::get('/profil', fn() => view('profil', $data));
 Route::get('/katalog', fn() => view('katalog', $data));
@@ -45,9 +46,12 @@ Route::get('/ticket', [EventController::class, 'ticket'])->name('ticket');
 
 Route::get('/checkout/{event}', [CheckoutController::class, 'create'])->name('checkout.create'); // Form checkout
 Route::post('/checkout/{event}', [CheckoutController::class, 'store'])->name('checkout.store');   // Proses simpan transaksi
+Route::get('/payment/{order_id}', [CheckoutController::class, 'payment'])->name('checkout.payment');
+Route::get('/success/{order_id}', [CheckoutController::class, 'success'])->name('checkout.success');
+
+Route::post('/midtrans/callback', [MidtransWebhookController::class, 'handle']);
 
 Route::resource('admin-partners', AdminPartnerController::class);
-
 Route::get('/gas-migrate', function () {
     try {
         Artisan::call('migrate', ['--force' => true]);

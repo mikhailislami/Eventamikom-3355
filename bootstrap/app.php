@@ -10,8 +10,10 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
     )
-    ->withMiddleware(function (Middleware $middleware): void {
-        
+    ->withMiddleware(function (Middleware $middleware) {
+     $middleware->validateCsrfTokens(except: [
+         '/midtrans/callback', // Mengecualikan route webhook Midtrans dari blokir CSRF
+     ]);
         // MENDAFTARKAN ALIAS MIDDLEWARE ADMIN
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
@@ -21,3 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
+
+    
+    
+    
